@@ -1,0 +1,28 @@
+[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector()[0m
+[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 2 initial tasks for 2 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(ApplicationSpec, sbt.ForkMain$SubclassFingerscan@28dacd81, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mDateTimeFormat[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return 1970 as the beginning of epoch[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSunService[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must retrieve correct sunset and sunrise information[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(WeatherServiceSpec, sbt.ForkMain$SubclassFingerscan@7298125, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mWeatherServiceSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mWeatherService[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return a meaningful temperature[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 0 initial tasks for 0 tests.[0m
+[0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 3 seconds, 701 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 3[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 3, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
+[0m[[0m[0minfo[0m] [0m[0mPassed: Total 3, Failed 0, Errors 0, Passed 3[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WeatherServiceSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ApplicationSpec[0m

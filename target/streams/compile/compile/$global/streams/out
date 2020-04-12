@@ -1,0 +1,7 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/david/Documents/interview/transaction/app/AppLoader.scala:51:12: method info in object Logger is deprecated (since 2.7.0): Create an instance of via Logger(...) and use the same-named method. Or use SLF4J directly.[0m
+[0m[[0m[33mwarn[0m] [0m[0m    Logger.info("The app is about to stop")[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/david/Documents/interview/transaction/app/AppLoader.scala:57:12: method info in object Logger is deprecated (since 2.7.0): Create an instance of via Logger(...) and use the same-named method. Or use SLF4J directly.[0m
+[0m[[0m[33mwarn[0m] [0m[0m    Logger.info("the app is about to start")[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
