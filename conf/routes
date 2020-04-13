@@ -6,3 +6,11 @@ GET     /data                       controllers.Application.data
 GET     /login                      controllers.Application.login
 POST    /login                      controllers.Application.doLogin
 GET     /restricted                 controllers.Application.restricted
+
+# core implementation idea here
+# ideally shouldnt be their own pages but are supplments to the current pages
+# todo: later implementation should have a query to filter, delete and insert
+GET     /transactions               controllers.Application.getTransaction
+GET     /summary                    controllers.Application.getSummary
+POST    /delete                     controllers.Application.deleteTransaction
+POST    /insert                     controllers.Application.postTransaction
