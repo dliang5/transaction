@@ -16,7 +16,7 @@ import play.api.db.{DBComponents, HikariCPComponents}
 import play.api.db.evolutions.{DynamicEvolutions, EvolutionsComponents}
 import play.filters.HttpFiltersComponents
 import scalikejdbc.config.DBs
-import services.{AuthService, SunService, UserAuthAction, WeatherService}
+import services.{AuthService, SunService, TransactionService, UserAuthAction, WeatherService}
 
 import scala.concurrent.Future
 
@@ -46,6 +46,7 @@ class AppComponents(context: Context) extends BuiltInComponentsFromContext(conte
   lazy val authService = new AuthService(defaultCacheApi.sync)
 
   lazy val userAuthAction = wire[UserAuthAction]
+  lazy val transactionService = new TransactionService
   override lazy val dynamicEvolutions = new DynamicEvolutions
   applicationLifecycle.addStopHook { () =>
     Logger.info("The app is about to stop")

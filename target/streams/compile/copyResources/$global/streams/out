@@ -2,6 +2,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	(/home/david/Documents/interview/transaction/conf/evolutions,/home/david/Documents/interview/transaction/target/scala-2.12/classes/evolutions)[0m
 [0m[[0m[0mdebug[0m] [0m[0m	(/home/david/Documents/interview/transaction/conf/evolutions/default,/home/david/Documents/interview/transaction/target/scala-2.12/classes/evolutions/default)[0m
 [0m[[0m[0mdebug[0m] [0m[0m	(/home/david/Documents/interview/transaction/conf/evolutions/default/1.sql,/home/david/Documents/interview/transaction/target/scala-2.12/classes/evolutions/default/1.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/david/Documents/interview/transaction/conf/evolutions/default/2.sql,/home/david/Documents/interview/transaction/target/scala-2.12/classes/evolutions/default/2.sql)[0m
 [0m[[0m[0mdebug[0m] [0m[0m	(/home/david/Documents/interview/transaction/conf/routes,/home/david/Documents/interview/transaction/target/scala-2.12/classes/routes)[0m
 [0m[[0m[0mdebug[0m] [0m[0m	(/home/david/Documents/interview/transaction/conf/logback.xml,/home/david/Documents/interview/transaction/target/scala-2.12/classes/logback.xml)[0m
 [0m[[0m[0mdebug[0m] [0m[0m	(/home/david/Documents/interview/transaction/conf/application.conf,/home/david/Documents/interview/transaction/target/scala-2.12/classes/application.conf)[0m

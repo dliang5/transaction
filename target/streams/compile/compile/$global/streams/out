@@ -1,7 +1,6 @@
-[0m[[0m[33mwarn[0m] [0m[0m/home/david/Documents/interview/transaction/app/AppLoader.scala:51:12: method info in object Logger is deprecated (since 2.7.0): Create an instance of via Logger(...) and use the same-named method. Or use SLF4J directly.[0m
-[0m[[0m[33mwarn[0m] [0m[0m    Logger.info("The app is about to stop")[0m
-[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/home/david/Documents/interview/transaction/app/AppLoader.scala:57:12: method info in object Logger is deprecated (since 2.7.0): Create an instance of via Logger(...) and use the same-named method. Or use SLF4J directly.[0m
-[0m[[0m[33mwarn[0m] [0m[0m    Logger.info("the app is about to start")[0m
-[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:42:22: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : java.util.UUID[0m
+[0m[[0m[31merror[0m] [0m[0m required: String[0m
+[0m[[0m[31merror[0m] [0m[0m      UUID.fromString(userCode), 1,[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Sun Apr 12 13:39:27 CDT 2020
+// @DATE:Sun Apr 12 20:52:17 CDT 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -24,6 +24,36 @@ package controllers.javascript {
       """
         function(file1) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[play.api.mvc.PathBindable[Asset]].javascriptUnbind + """)("file", file1)})
+        }
+      """
+    )
+  
+    // @LINE:13
+    def getTransaction: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.Application.getTransaction",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "transactions"})
+        }
+      """
+    )
+  
+    // @LINE:14
+    def getSummary: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.Application.getSummary",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "summary"})
+        }
+      """
+    )
+  
+    // @LINE:16
+    def insertTransaction: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.Application.insertTransaction",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "insert"})
         }
       """
     )
@@ -74,6 +104,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
+        }
+      """
+    )
+  
+    // @LINE:15
+    def deleteTransaction: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.Application.deleteTransaction",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "delete"})
         }
       """
     )

@@ -4,7 +4,7 @@ import java.util.{Date, UUID}
 
 import play.api.libs.json.Json
 
-case class Transaction(userId: UUID, transactionId: Int,
+case class Transaction(userId: String, transactionId: Int,
                        transactionAmount: Int, transactionDate: Date)
 
 object Transaction {

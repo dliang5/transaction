@@ -10,9 +10,10 @@ import akka.pattern.ask
 import controllers.Assets.Asset
 import play.api.libs.json.Json
 import play.api.mvc._
-import services.{AuthService, SunService, UserAuthAction, WeatherService}
+import services.{AuthService, SunService, TransactionService, UserAuthAction, WeatherService}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.libs.json
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -22,7 +23,7 @@ class Application (
     components: ControllerComponents, assets: Assets,
     sunService: SunService, weatherService: WeatherService,
     actorSystem: ActorSystem, authService: AuthService,
-    userAuthAction: UserAuthAction)
+    userAuthAction: UserAuthAction, transactionService: TransactionService)
     extends AbstractController(components) {
 
   val userDataForm = Form {
@@ -73,6 +74,19 @@ class Application (
     } yield {
       Ok(Json.toJson(CombinedData(sunInfo, temperature, requests)))
     }
+  }
+
+  def getTransaction(userCode: String) = Action { implicit request =>
+    Ok(Json.toJson(transactionService.getTransactions(userCode)))
+  }
+    def getSummary(userCode: String) = Action { implicit request =>
+    Ok(Json.toJson(transactionService.getSummary(userCode)))
+  }
+    def deleteTransaction(userCode: String) = Action { implicit request =>
+    Ok(Json.toJson(transactionService.deleteTransaction(userCode)))
+  }
+    def insertTransaction(userCode: String) = Action { implicit request =>
+    Ok(Json.toJson(transactionService.insertTransaction(userCode)))
   }
 
   def versioned(path: String, file: Asset) = assets.versioned(path, file)

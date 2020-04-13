@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Sun Apr 12 13:39:27 CDT 2020
+// @DATE:Sun Apr 12 20:52:17 CDT 2020
 
 import play.api.mvc.Call
 
@@ -21,6 +21,24 @@ package controllers {
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
+    }
+  
+    // @LINE:13
+    def getTransaction(): Call = {
+      implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("userCode", "stests"))); _rrc
+      Call("GET", _prefix + { _defaultPrefix } + "transactions")
+    }
+  
+    // @LINE:14
+    def getSummary(): Call = {
+      implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("userCode", "stests"))); _rrc
+      Call("GET", _prefix + { _defaultPrefix } + "summary")
+    }
+  
+    // @LINE:16
+    def insertTransaction(): Call = {
+      implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("userCode", "stests"))); _rrc
+      Call("POST", _prefix + { _defaultPrefix } + "insert")
     }
   
     // @LINE:7
@@ -51,6 +69,12 @@ package controllers {
     def login(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "login")
+    }
+  
+    // @LINE:15
+    def deleteTransaction(): Call = {
+      implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("userCode", "stests"))); _rrc
+      Call("POST", _prefix + { _defaultPrefix } + "delete")
     }
   
   }

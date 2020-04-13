@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Sun Apr 12 13:39:27 CDT 2020
+// @DATE:Sun Apr 12 20:52:17 CDT 2020
 
 package router
 
@@ -41,6 +41,10 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.Application.login"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.Application.doLogin"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """restricted""", """controllers.Application.restricted"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """transactions""", """controllers.Application.getTransaction(userCode:String = "stests")"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """summary""", """controllers.Application.getSummary(userCode:String = "stests")"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """delete""", """controllers.Application.deleteTransaction(userCode:String = "stests")"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """insert""", """controllers.Application.insertTransaction(userCode:String = "stests")"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -156,6 +160,80 @@ class Routes(
     )
   )
 
+  // @LINE:13
+  private[this] lazy val controllers_Application_getTransaction6_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("transactions")))
+  )
+  private[this] lazy val controllers_Application_getTransaction6_invoker = createInvoker(
+    Application_0.getTransaction(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.Application",
+      "getTransaction",
+      Seq(classOf[String]),
+      "GET",
+      this.prefix + """transactions""",
+      """ core implementation idea here
+ ideally shouldnt be their own pages but are supplments to the current pages
+ todo: later implementation should have a query to filter, delete and insert""",
+      Seq()
+    )
+  )
+
+  // @LINE:14
+  private[this] lazy val controllers_Application_getSummary7_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("summary")))
+  )
+  private[this] lazy val controllers_Application_getSummary7_invoker = createInvoker(
+    Application_0.getSummary(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.Application",
+      "getSummary",
+      Seq(classOf[String]),
+      "GET",
+      this.prefix + """summary""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:15
+  private[this] lazy val controllers_Application_deleteTransaction8_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("delete")))
+  )
+  private[this] lazy val controllers_Application_deleteTransaction8_invoker = createInvoker(
+    Application_0.deleteTransaction(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.Application",
+      "deleteTransaction",
+      Seq(classOf[String]),
+      "POST",
+      this.prefix + """delete""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:16
+  private[this] lazy val controllers_Application_insertTransaction9_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("insert")))
+  )
+  private[this] lazy val controllers_Application_insertTransaction9_invoker = createInvoker(
+    Application_0.insertTransaction(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.Application",
+      "insertTransaction",
+      Seq(classOf[String]),
+      "POST",
+      this.prefix + """insert""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -193,6 +271,30 @@ class Routes(
     case controllers_Application_restricted5_route(params@_) =>
       call { 
         controllers_Application_restricted5_invoker.call(Application_0.restricted)
+      }
+  
+    // @LINE:13
+    case controllers_Application_getTransaction6_route(params@_) =>
+      call(Param[String]("userCode", Right("stests"))) { (userCode) =>
+        controllers_Application_getTransaction6_invoker.call(Application_0.getTransaction(userCode))
+      }
+  
+    // @LINE:14
+    case controllers_Application_getSummary7_route(params@_) =>
+      call(Param[String]("userCode", Right("stests"))) { (userCode) =>
+        controllers_Application_getSummary7_invoker.call(Application_0.getSummary(userCode))
+      }
+  
+    // @LINE:15
+    case controllers_Application_deleteTransaction8_route(params@_) =>
+      call(Param[String]("userCode", Right("stests"))) { (userCode) =>
+        controllers_Application_deleteTransaction8_invoker.call(Application_0.deleteTransaction(userCode))
+      }
+  
+    // @LINE:16
+    case controllers_Application_insertTransaction9_route(params@_) =>
+      call(Param[String]("userCode", Right("stests"))) { (userCode) =>
+        controllers_Application_insertTransaction9_invoker.call(Application_0.insertTransaction(userCode))
       }
   }
 }
