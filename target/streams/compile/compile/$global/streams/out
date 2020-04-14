@@ -1,6 +1,39 @@
-[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:42:22: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : java.util.UUID[0m
-[0m[[0m[31merror[0m] [0m[0m required: String[0m
-[0m[[0m[31merror[0m] [0m[0m      UUID.fromString(userCode), 1,[0m
-[0m[[0m[31merror[0m] [0m[0m                     ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/controllers/Application.scala:79:49: overloaded method value async with alternatives:[0m
+[0m[[0m[31merror[0m] [0m[0m  [A](bodyParser: play.api.mvc.BodyParser[A])(block: play.api.mvc.Request[A] => scala.concurrent.Future[play.api.mvc.Result])play.api.mvc.Action[A] <and>[0m
+[0m[[0m[31merror[0m] [0m[0m  (block: play.api.mvc.Request[play.api.mvc.AnyContent] => scala.concurrent.Future[play.api.mvc.Result])play.api.mvc.Action[play.api.mvc.AnyContent] <and>[0m
+[0m[[0m[31merror[0m] [0m[0m  (block: => scala.concurrent.Future[play.api.mvc.Result])play.api.mvc.Action[play.api.mvc.AnyContent][0m
+[0m[[0m[31merror[0m] [0m[0m cannot be applied to (Unit)[0m
+[0m[[0m[31merror[0m] [0m[0m  def getTransaction(userCode: String) = Action.async {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:25:7: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : List[model.Transaction][0m
+[0m[[0m[31merror[0m] [0m[0m required: scala.concurrent.Future[List[model.Transaction]][0m
+[0m[[0m[31merror[0m] [0m[0m      select[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:36:28: value transactionDate is not a member of List[model.Transaction][0m
+[0m[[0m[31merror[0m] [0m[0m      val dateStr = record.transactionDate.toString().split("-")[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:37:82: value transactionAmount is not a member of List[model.Transaction][0m
+[0m[[0m[31merror[0m] [0m[0m      summaryValues(dateStr(1).toInt) = summaryValues(dateStr(1).toInt) + record.transactionAmount[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:38:19: value += is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  Expression does not convert to assignment because:[0m
+[0m[[0m[31merror[0m] [0m[0m    value transactionAmount is not a member of List[model.Transaction][0m
+[0m[[0m[31merror[0m] [0m[0m    expansion: summaryYear = summaryYear.+(record.<transactionAmount: error>)[0m
+[0m[[0m[31merror[0m] [0m[0m      summaryYear += record.transactionAmount[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:35:35: Cannot find an implicit ExecutionContext. You might pass[0m
+[0m[[0m[31merror[0m] [0m[0man (implicit ec: ExecutionContext) parameter to your method.[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mThe ExecutionContext is used to configure how and on which[0m
+[0m[[0m[31merror[0m] [0m[0mthread pools Futures will run, so the specific ExecutionContext[0m
+[0m[[0m[31merror[0m] [0m[0mthat is selected is important.[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mIf your application does not define an ExecutionContext elsewhere,[0m
+[0m[[0m[31merror[0m] [0m[0mconsider using Scala's global ExecutionContext by defining[0m
+[0m[[0m[31merror[0m] [0m[0mthe following:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mimplicit val ec = ExecutionContext.global[0m
+[0m[[0m[31merror[0m] [0m[0m    getTransactions(userCode).map { record =>[0m
+[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m6 errors found[0m

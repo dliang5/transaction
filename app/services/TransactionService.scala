@@ -6,6 +6,8 @@ import java.util.UUID
 import model.{Transaction, TransactionSummary}
 import scalikejdbc._
 
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 class TransactionService {
   // this is your standard getAll of the transaction
   // possibly of having it filter the results by month
@@ -21,6 +23,20 @@ class TransactionService {
         }.list.apply()
       println("this is the transactions in here", select, userCode)
       select
+    }
+  }
+
+  def getTransactions1(userCode: String): Future[List[Transaction]] = {
+
+    DB.futureLocalTx { implicit session =>
+      val select = sql"select * from transactions where user_id = $userCode"
+        .map{ rs =>
+          Transaction(userCode, rs.int("transaction_id"),
+            rs.int("transaction_amount"),
+            rs.date("transaction_date"))
+        }.list.apply()
+
+      Future(select)
     }
   }
 

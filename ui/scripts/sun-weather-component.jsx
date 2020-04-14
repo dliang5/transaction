@@ -10,7 +10,6 @@ class SunWeatherComponent extends React.Component {
             temperature: null,
             requests: null
         };
-        console.log("hello there");
     }
 
     componentDidMount = () => {
@@ -27,25 +26,27 @@ class SunWeatherComponent extends React.Component {
     
     render = () => {
         return(
-            <table><tbody>
-                <tr>
-                    <td>Sunrise time</td>
-                    <td>{this.state.sunrise}</td>
-                </tr>
-                <tr>
-                    <td>Sunset time</td>
-                    <td>{this.state.sunset}</td>
-                </tr>
-                <tr>
-                    <td>Current temperature</td>
-                    <td>{this.state.temperature}</td>
-                </tr>
-                <tr>
-                    <td>Requests</td>
-                    <td>{this.state.requests}</td>
-                </tr>
-            
-            </tbody></table>
+            <React.Fragment>
+                <table><tbody>
+                    <tr>
+                        <td>Sunrise time</td>
+                        <td>{this.state.sunrise}</td>
+                    </tr>
+                    <tr>
+                        <td>Sunset time</td>
+                        <td>{this.state.sunset}</td>
+                    </tr>
+                    <tr>
+                        <td>Current temperature</td>
+                        <td>{this.state.temperature}</td>
+                    </tr>
+                    <tr>
+                        <td>Requests</td>
+                        <td>{this.state.requests}</td>
+                    </tr>
+                
+                </tbody></table>
+            </React.Fragment>
         );
     }
 }
