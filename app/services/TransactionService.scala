@@ -19,9 +19,9 @@ class TransactionService {
         .map{ rs =>
           Transaction(userCode, rs.int("transaction_id"),
             rs.int("transaction_amount"),
-            rs.date("transaction_date"))
+            rs.date("transaction_date"), convertAmountToRewards(rs.int("transaction_amount")))
         }.list.apply()
-      println("this is the transactions in here", select, userCode)
+      println("this is the transactions in here", select)
       select
     }
   }

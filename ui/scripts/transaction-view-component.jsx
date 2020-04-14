@@ -23,13 +23,18 @@ class TransactionView extends React.Component {
         let row;
         if (!this.state.isLoading) {
             row = this.state.transactions.map((transaction, i) => {
+                let newDate = new Date(transaction.transactionDate);
+                let dateString = new Date(newDate.getTime() - (newDate.getTimezoneOffset() * 60000 ))
+                                    .toISOString()
+                                    .split("T")[0];
+                console.log(dateString)
                 return (
                     <tr key={i}>
                         <td>{transaction.userId}</td>
                         <td>{transaction.transactionId}</td>
                         <td>{transaction.transactionAmount}</td>
-                        <td>{transaction.transactionDate}</td>
-                        <td>0</td>
+                        <td>{dateString}</td>
+                        <td>{transaction.transactionRewards}</td>
                     </tr>
                 );
             });
@@ -39,17 +44,18 @@ class TransactionView extends React.Component {
                 {this.state.isLoading ?
                     <div>LOADING...</div> :
                     <div>
-                        <div>DONE LOADING...</div>
                         <table>
+                            <thead>
+                                <tr>
+                                    <th>USER</th>
+                                    <th>TRANSACTION ID</th>
+                                    <th>AMOUNTS</th>
+                                    <th>DATE</th>
+                                    <th>REWARD POINTS</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                                <th>USER</th>
-                                <th>TRANSACTION ID</th>
-                                <th>AMOUNTS</th>
-                                <th>DATE</th>
-                                <th>REWARD POINTS</th>
-
                                 {row}
-
                             </tbody>
                         </table>
                     </div>
