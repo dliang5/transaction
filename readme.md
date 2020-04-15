@@ -33,8 +33,13 @@ This is the main event I guess haha. Essentially, for each user, it would add up
 ### Login
 ![Login](photos/login.png)
 
-OOF, it is pretty barebone much like the insertion of a single transaction. I would say this is due to how ambituous I got with this assignment (relative to my skillset) and I didn't realized how much I didn't know using Play Framework's view concept and how it would integrate with React. Ideally, I really wanted to hide the results and that the user would have to login in to see their results and potentially others as well.
+OOF, it is pretty barebone much like the insertion of a single transaction. I would say this is due to how ambituous I got with this assignment (relative to my skillset). I didn't realized how much I didn't know about Play Framework's view concept and how it would integrate with React. Ideally, I really wanted to hide the results and that the user would have to login in to see their results and potentially others as well.
 
 ### Insertion
 ![Insertion](photos/insert.png)
+
 Yup, so it has only one submit box mainly because it is also barebone as well. I figured this would be the section an anonymous person would use or someone logged in. This is where the application would somehow grab the person's userid or show "Anonymous Beaver" as a random person. Also, it is a sinle input becuase the Date and id are by default based on the backend and the present.
+
+
+## Comment
+The main visual came from bootstrap which was quite nice to use and it mades things really clean. I utilized Play Framework's view services to prototype (hopeful attempt) and maybe use its routing features as well. That was a big mistake and kind of confused a lot of my ideas. All of the core backend implementation is in the app/ folder and all of the frontend implementation is in the UI/ folder. Also big note, LOL, there is an error after running "npm run watch", it's cool actually. It was me building react from scratch and figuring out webpack as I went along. That was a super wild ride and I probably won't be doing that again without more research. I also added a random "Learn More" button because it made some composition on my webpages and made it look decent I guess.
