@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Tue Apr 14 22:53:25 CDT 2020
+// @DATE:Wed Apr 15 00:46:10 CDT 2020
 
 import play.api.mvc.Call
 

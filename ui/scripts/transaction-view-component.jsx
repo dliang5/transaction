@@ -42,7 +42,7 @@ class TransactionView extends React.Component {
             <React.Fragment>
                 <div>
                     <div className="jumbotron">
-                        <h1 className="display-4">Transaction Views</h1>
+                        <h1 className="display-4">Transaction View</h1>
                         <hr className="my-4"/>
                         <p className="lead">
                             <a className="btn btn-primary btn-lg" href="#" role="button">

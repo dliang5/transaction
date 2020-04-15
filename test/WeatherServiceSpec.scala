@@ -6,7 +6,6 @@ import play.api.ApplicationLoader.Context
 import play.api.{BuiltInComponentsFromContext, NoHttpFiltersComponents}
 import play.api.libs.ws.ahc.AhcWSComponents
 import play.api.routing.Router
-import services.WeatherService
 
 class TestAppComponents(context: Context)
   extends BuiltInComponentsFromContext(context)
@@ -14,7 +13,6 @@ class TestAppComponents(context: Context)
     with AhcWSComponents {
 
   lazy val router: Router = Router.empty
-  lazy val weatherService = wire[WeatherService]
 }
 
 
@@ -28,15 +26,4 @@ class WeatherServiceSpec extends PlaySpec
   override implicit val patienceConfig =
     PatienceConfig(timeout = Span(5, Seconds))
 
-  "WeatherService" must {
-    "return a meaningful temperature" in {
-      val lat = -33.8830
-      val lon = 151.2167
-      val resultF = components.weatherService.getTemperature(lat, lon)
-      whenReady(resultF) { result =>
-        result mustBe >=(-20.0)
-        result mustBe <=(60.0)
-      }
-    }
-  }
 }

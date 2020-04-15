@@ -16,7 +16,7 @@ import play.api.db.{DBComponents, HikariCPComponents}
 import play.api.db.evolutions.{DynamicEvolutions, EvolutionsComponents}
 import play.filters.HttpFiltersComponents
 import scalikejdbc.config.DBs
-import services.{AuthService, SunService, TransactionService, UserAuthAction, WeatherService}
+import services.{AuthService, TransactionService, UserAuthAction}
 
 import scala.concurrent.Future
 
@@ -32,8 +32,6 @@ class AppApplicationLoader extends ApplicationLoader {
 class AppComponents(context: Context) extends BuiltInComponentsFromContext(context)
   with AhcWSComponents with EvolutionsComponents with DBComponents
   with HikariCPComponents with EhCacheComponents with AssetsComponents with HttpFiltersComponents {
-  lazy val sunService = new SunService(wsClient)
-  lazy val weatherService = new WeatherService(wsClient)
 
   override lazy val controllerComponents = wire[DefaultControllerComponents]
   lazy val prefix: String = "/"

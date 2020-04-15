@@ -2,7 +2,6 @@ package controllers
 
 import java.util.concurrent.TimeUnit
 
-import model.CombinedData
 import actors.StatsActor
 import akka.actor.ActorSystem
 import akka.util.Timeout
@@ -10,7 +9,7 @@ import akka.pattern.ask
 import controllers.Assets.Asset
 import play.api.libs.json.Json
 import play.api.mvc._
-import services.{AuthService, SunService, TransactionService, UserAuthAction, WeatherService}
+import services.{AuthService, TransactionService, UserAuthAction}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json
@@ -20,9 +19,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 case class UserLoginData(username: String, password: String)
 case class TransactionForm(transactionAmount: Int)
 class Application (
-    components: ControllerComponents, assets: Assets,
-    sunService: SunService, weatherService: WeatherService,
-    actorSystem: ActorSystem, authService: AuthService,
+    components: ControllerComponents, assets: Assets, authService: AuthService,
     userAuthAction: UserAuthAction, transactionService: TransactionService)
     extends AbstractController(components) {
 
@@ -85,21 +82,8 @@ class Application (
     }
 
 
-  def data = Action.async {
-    val lat = -33.8830
-    val lon = 151.2167
-    val sunInfoF = sunService.getSunInfo(lat, lon)
-    val temperateF = weatherService.getTemperature(lat, lon)
-    implicit val timeout = Timeout(5, TimeUnit.SECONDS)
-    val requestsF = (actorSystem.actorSelection(StatsActor.path) ?
-      StatsActor.GetStats).mapTo[Int]
-    for {
-      sunInfo <- sunInfoF
-      temperature <- temperateF
-      requests <- requestsF
-    } yield {
-      Ok(Json.toJson(CombinedData(sunInfo, temperature, requests)))
-    }
+  def data = Action { implicit request =>
+    Ok(Json.toJson(transactionService.setUpTransactions))
   }
 
 

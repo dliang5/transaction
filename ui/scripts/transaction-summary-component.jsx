@@ -39,7 +39,7 @@ class TransactionSummary extends React.Component {
             <React.Fragment>
                 <div>
                     <div className="jumbotron">
-                        <h1 className="display-4">Summary Transaction Views</h1>
+                        <h1 className="display-4">3 Month Summary View</h1>
                         <hr className="my-4"/>
                         <p className="lead">
                             <a className="btn btn-primary btn-lg" href="#" role="button">
@@ -53,7 +53,6 @@ class TransactionSummary extends React.Component {
                     <div>LOADING...</div> :
                     <div>
                         <table className="table">
-                            <caption className="wording">3 Monthly Period Report</caption>  
                             <thead>
                                 <tr>
                                     <th>USER</th>

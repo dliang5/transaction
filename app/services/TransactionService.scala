@@ -1,13 +1,42 @@
 package services
 import model.{Transaction, TransactionSummary}
 import scalikejdbc._
+
 import scala.collection.mutable.HashMap
 import scala.concurrent.Future
 import java.text.SimpleDateFormat
 import java.util.Date
 
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.io.Source
 class TransactionService {
+
+  // todo: for some odd reason this just doesn't want to work
+  // ill just manually do it with the random generator first
+  def setUpTransactions: Int = {
+    val currentDirectory = new java.io.File(".").getCanonicalPath
+    println("im in here", currentDirectory)
+    val filename = currentDirectory + "/app/data/data.csv"
+    var sqlCommand = "insert into transactions (user_id, transaction_id, transaction_amount, transaction_date) values "
+
+    for (line: String <- Source.fromFile(filename).getLines){
+      val recordInfo = line.trim.stripMargin.split(",").toList
+      val name = recordInfo(0)
+      val id = recordInfo(1)
+      val amount = recordInfo(2)
+      val format = new java.text.SimpleDateFormat("yyyy-MM-dd")
+      val date = recordInfo(3)
+      val currentEntry = s"($name, $id, $amount, $date),"
+      sqlCommand += currentEntry
+    }
+    sqlCommand = sqlCommand.dropRight(1)
+
+    DB.localTx{ implicit session =>
+      sql"insert into transactions (user_id, transaction_id, transaction_amount, transaction_date) values $sqlCommand".update.apply()
+    }
+    1
+  }
+
   // this is your standard getAll of the transaction
   // possibly of having it filter the results by month
   // right now, anyone can see the result of the transactions
