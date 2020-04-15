@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Mon Apr 13 22:29:35 CDT 2020
+// @DATE:Tue Apr 14 22:28:24 CDT 2020
 
 package controllers;
 

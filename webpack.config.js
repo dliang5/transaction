@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   entry: './ui/entry.js',
@@ -32,22 +32,21 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader', 'sass-loader'
+          'style-loader', 'css-loader', 'sass-loader'
         ]
       }
     ]
   },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: "styles.css" })
-  ],
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-        cache: true,
-        paralell: true
-      }})
-    ]
-  }
+  // plugins: [
+  //   new MiniCssExtractPlugin({ filename: "styles.css" })
+  // ],
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       uglifyOptions: {
+  //       cache: true,
+  //       paralell: true
+  //     }})
+  //   ]
+  // }
 };

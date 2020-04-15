@@ -15,7 +15,6 @@ class TransactionView extends React.Component {
                 transactions: response.data,
                 isLoading: false
             });
-            // console.log("hmm", this.state.transactions[0], this.state.transactions[0].userId);
         }))
     }
 
@@ -27,7 +26,7 @@ class TransactionView extends React.Component {
                 let dateString = new Date(newDate.getTime() - (newDate.getTimezoneOffset() * 60000 ))
                                     .toISOString()
                                     .split("T")[0];
-                console.log(dateString)
+                // console.log(dateString)
                 return (
                     <tr key={i}>
                         <td>{transaction.userId}</td>
@@ -41,14 +40,27 @@ class TransactionView extends React.Component {
         }
         return (
             <React.Fragment>
+                <div>
+                    <div className="jumbotron">
+                        <h1 className="display-4">Transaction Views</h1>
+                        <hr className="my-4"/>
+                        <p className="lead">
+                            <a className="btn btn-primary btn-lg" href="#" role="button">
+                                Learn More
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
                 {this.state.isLoading ?
                     <div>LOADING...</div> :
                     <div>
-                        <table>
+                        <table className="table">
+                            <caption>RAW DATA</caption>
                             <thead>
                                 <tr>
                                     <th>USER</th>
-                                    <th>TRANSACTION ID</th>
+                                    <th>ID</th>
                                     <th>AMOUNTS</th>
                                     <th>DATE</th>
                                     <th>REWARD POINTS</th>

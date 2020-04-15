@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Mon Apr 13 22:29:35 CDT 2020
+// @DATE:Tue Apr 14 22:28:24 CDT 2020
 
 package router
 
@@ -44,7 +44,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """transactions""", """controllers.Application.getTransaction(userCode:String = "stests")"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """summary""", """controllers.Application.getSummary(userCode:String = "stests")"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """delete""", """controllers.Application.deleteTransaction(userCode:String = "stests")"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """insert""", """controllers.Application.insertTransaction(userCode:String = "stests")"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """insert""", """controllers.Application.insertTransaction"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -221,12 +221,12 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("insert")))
   )
   private[this] lazy val controllers_Application_insertTransaction9_invoker = createInvoker(
-    Application_0.insertTransaction(fakeValue[String]),
+    Application_0.insertTransaction,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Application",
       "insertTransaction",
-      Seq(classOf[String]),
+      Nil,
       "POST",
       this.prefix + """insert""",
       """""",
@@ -293,8 +293,8 @@ class Routes(
   
     // @LINE:16
     case controllers_Application_insertTransaction9_route(params@_) =>
-      call(Param[String]("userCode", Right("stests"))) { (userCode) =>
-        controllers_Application_insertTransaction9_invoker.call(Application_0.insertTransaction(userCode))
+      call { 
+        controllers_Application_insertTransaction9_invoker.call(Application_0.insertTransaction)
       }
   }
 }

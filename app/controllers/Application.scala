@@ -18,7 +18,7 @@ import play.api.libs.json
 import scala.concurrent.ExecutionContext.Implicits.global
 
 case class UserLoginData(username: String, password: String)
-
+case class TransactionForm(transactionAmount: Int)
 class Application (
     components: ControllerComponents, assets: Assets,
     sunService: SunService, weatherService: WeatherService,
@@ -31,6 +31,12 @@ class Application (
       "username" -> nonEmptyText,
       "password" -> nonEmptyText
     )(UserLoginData.apply)(UserLoginData.unapply)
+  }
+
+  val transactionForm = Form {
+    mapping(
+      "transactionAmount" -> number
+    )(TransactionForm.apply)(TransactionForm.unapply)
   }
 
   def index = Action {
@@ -59,22 +65,6 @@ class Application (
     Ok(views.html.restricted(userAuthRequest.user))
   }
 
-  def data = Action.async {
-    val lat = -33.8830
-    val lon = 151.2167
-    val sunInfoF = sunService.getSunInfo(lat, lon)
-    val temperateF = weatherService.getTemperature(lat, lon)
-    implicit val timeout = Timeout(5, TimeUnit.SECONDS)
-    val requestsF = (actorSystem.actorSelection(StatsActor.path) ?
-      StatsActor.GetStats).mapTo[Int]
-    for {
-      sunInfo <- sunInfoF
-      temperature <- temperateF
-      requests <- requestsF
-    } yield {
-      Ok(Json.toJson(CombinedData(sunInfo, temperature, requests)))
-    }
-  }
 
   def transactions(userCode: String) = Action.async {
     val transactionInfoF = transactionService.getTransactions1(userCode)
@@ -95,9 +85,34 @@ class Application (
     def deleteTransaction(userCode: String) = Action { implicit request =>
     Ok(Json.toJson(transactionService.deleteTransaction(userCode)))
   }
-    def insertTransaction(userCode: String) = Action { implicit request =>
-    Ok(Json.toJson(transactionService.insertTransaction(userCode)))
+    def insertTransaction = Action { implicit request =>
+      transactionForm.bindFromRequest.fold(
+        formWithErrors => BadRequest,
+        userData => {
+          transactionService.insertTransaction("Anonymous Billy", userData.transactionAmount)
+          Redirect("/")
+        }
+      )
+    }
+
+
+  def data = Action.async {
+    val lat = -33.8830
+    val lon = 151.2167
+    val sunInfoF = sunService.getSunInfo(lat, lon)
+    val temperateF = weatherService.getTemperature(lat, lon)
+    implicit val timeout = Timeout(5, TimeUnit.SECONDS)
+    val requestsF = (actorSystem.actorSelection(StatsActor.path) ?
+      StatsActor.GetStats).mapTo[Int]
+    for {
+      sunInfo <- sunInfoF
+      temperature <- temperateF
+      requests <- requestsF
+    } yield {
+      Ok(Json.toJson(CombinedData(sunInfo, temperature, requests)))
+    }
   }
+
 
   def versioned(path: String, file: Asset) = assets.versioned(path, file)
 }

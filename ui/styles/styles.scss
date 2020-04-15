@@ -1,1 +1,11 @@
-@import "node_modules/concise.css/concise";
+// @import "node_modules/concise.css/concise";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.summary-table {
+    text-align: center;
+}
+
+.wording {
+    color: red;
+    background-color: yellow;
+}

@@ -32,10 +32,9 @@ Seq[Any](format.raw/*2.1*/("""<!DOCTYPE html>
            href=""""),_display_(/*8.19*/routes/*8.25*/.Application.versioned("images/favicon.png")),format.raw/*8.69*/("""">
     </head>
     <body>
-        <h1>Hello Play</h1>
         <div id="reactView"></div>
     </body>
-    <script src=""""),_display_(/*14.19*/routes/*14.25*/.Application.versioned("compiled/bundle.js")),format.raw/*14.69*/("""" ></script>
+    <script src=""""),_display_(/*13.19*/routes/*13.25*/.Application.versioned("compiled/bundle.js")),format.raw/*13.69*/("""" ></script>
 </html>
 """))
       }
@@ -53,11 +52,11 @@ Seq[Any](format.raw/*2.1*/("""<!DOCTYPE html>
 
               /*
                   -- GENERATED --
-                  DATE: Sun Apr 12 09:30:15 CDT 2020
+                  DATE: Mon Apr 13 23:36:19 CDT 2020
                   SOURCE: /home/david/Documents/interview/transaction/app/views/index.scala.html
-                  HASH: a5ed05066d68fdb4d1af20e4df5747fdae44a5ff
-                  MATRIX: 722->1|818->4|954->114|968->120|1034->166|1132->238|1146->244|1210->288|1356->407|1371->413|1436->457
-                  LINES: 21->1|26->2|30->6|30->6|30->6|32->8|32->8|32->8|38->14|38->14|38->14
+                  HASH: 2a665e64476eeb588235e7244a52d9853d117155
+                  MATRIX: 722->1|818->4|954->114|968->120|1034->166|1132->238|1146->244|1210->288|1328->379|1343->385|1408->429
+                  LINES: 21->1|26->2|30->6|30->6|30->6|32->8|32->8|32->8|37->13|37->13|37->13
                   -- GENERATED --
               */
           

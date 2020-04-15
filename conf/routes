@@ -13,4 +13,4 @@ GET     /restricted                 controllers.Application.restricted
 GET     /transactions               controllers.Application.getTransaction(userCode: String = "stests")
 GET     /summary                    controllers.Application.getSummary(userCode: String = "stests")
 POST    /delete                     controllers.Application.deleteTransaction(userCode: String = "stests")
-POST    /insert                     controllers.Application.insertTransaction(userCode: String = "stests")
+POST    /insert                     controllers.Application.insertTransaction

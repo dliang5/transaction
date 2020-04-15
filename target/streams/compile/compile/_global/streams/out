@@ -1,0 +1,18 @@
+[0m[[0m[0mdebug[0m] [0m[0mAcquiring lock on file /home/david/Documents/interview/transaction/project/target/.sbt-compilation-infos/root-compile/.sbt-idea-lock ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:58:21: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Int(1)[0m
+[0m[[0m[31merror[0m] [0m[0m required: String[0m
+[0m[[0m[31merror[0m] [0m[0m      summaryValues(1), summaryValues(2), summaryValues(3),[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:58:39: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Int(2)[0m
+[0m[[0m[31merror[0m] [0m[0m required: String[0m
+[0m[[0m[31merror[0m] [0m[0m      summaryValues(1), summaryValues(2), summaryValues(3),[0m
+[0m[[0m[31merror[0m] [0m[0m                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:58:57: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Int(3)[0m
+[0m[[0m[31merror[0m] [0m[0m required: String[0m
+[0m[[0m[31merror[0m] [0m[0m      summaryValues(1), summaryValues(2), summaryValues(3),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[0m[[0m[0mdebug[0m] [0m[0mReleasing lock on file /home/david/Documents/interview/transaction/project/target/.sbt-compilation-infos/root-compile/.sbt-idea-lock.[0m
