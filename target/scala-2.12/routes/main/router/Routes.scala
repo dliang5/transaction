@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Tue Apr 14 22:28:24 CDT 2020
+// @DATE:Tue Apr 14 22:53:25 CDT 2020
 
 package router
 
@@ -41,8 +41,8 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.Application.login"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.Application.doLogin"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """restricted""", """controllers.Application.restricted"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """transactions""", """controllers.Application.getTransaction(userCode:String = "stests")"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """summary""", """controllers.Application.getSummary(userCode:String = "stests")"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """transactions""", """controllers.Application.getTransaction"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """summary""", """controllers.Application.getSummary"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """delete""", """controllers.Application.deleteTransaction(userCode:String = "stests")"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """insert""", """controllers.Application.insertTransaction"""),
     Nil
@@ -165,12 +165,12 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("transactions")))
   )
   private[this] lazy val controllers_Application_getTransaction6_invoker = createInvoker(
-    Application_0.getTransaction(fakeValue[String]),
+    Application_0.getTransaction,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Application",
       "getTransaction",
-      Seq(classOf[String]),
+      Nil,
       "GET",
       this.prefix + """transactions""",
       """ core implementation idea here
@@ -185,12 +185,12 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("summary")))
   )
   private[this] lazy val controllers_Application_getSummary7_invoker = createInvoker(
-    Application_0.getSummary(fakeValue[String]),
+    Application_0.getSummary,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Application",
       "getSummary",
-      Seq(classOf[String]),
+      Nil,
       "GET",
       this.prefix + """summary""",
       """""",
@@ -275,14 +275,14 @@ class Routes(
   
     // @LINE:13
     case controllers_Application_getTransaction6_route(params@_) =>
-      call(Param[String]("userCode", Right("stests"))) { (userCode) =>
-        controllers_Application_getTransaction6_invoker.call(Application_0.getTransaction(userCode))
+      call { 
+        controllers_Application_getTransaction6_invoker.call(Application_0.getTransaction)
       }
   
     // @LINE:14
     case controllers_Application_getSummary7_route(params@_) =>
-      call(Param[String]("userCode", Right("stests"))) { (userCode) =>
-        controllers_Application_getSummary7_invoker.call(Application_0.getSummary(userCode))
+      call { 
+        controllers_Application_getSummary7_invoker.call(Application_0.getSummary)
       }
   
     // @LINE:15

@@ -1,6 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:84:22: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : Int[0m
-[0m[[0m[31merror[0m] [0m[0m required: String[0m
-[0m[[0m[31merror[0m] [0m[0m        .update.apply()[0m
-[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/david/Documents/interview/transaction/app/services/TransactionService.scala:54:31: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : List[String][0m
+[0m[[0m[31merror[0m] [0m[0m required: List[Nothing][0m
+[0m[[0m[31merror[0m] [0m[0m        dates = List(dateStr) ::: dates[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

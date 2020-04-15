@@ -22,19 +22,19 @@ class TransactionSummary extends React.Component {
 
     render = () => {
         let row;
-        // if (!this.state.isLoading) {
-        //     row = this.state.transactions.map((transaction, i) => {
-        //         return (
-        //             <tr key={i}>
-        //                 <td>{transaction.userId}</td>
-        //                 <td>{transaction.month1}</td>
-        //                 <td>{transaction.month2}</td>
-        //                 <td>{transaction.month2}</td>
-        //                 <td>{transaction.total}</td>
-        //             </tr>
-        //         );
-        //     });
-        // }
+        if (!this.state.isLoading) {
+            row = this.state.transactions.map((transaction, i) => {
+                return (
+                    <tr key={i}>
+                        <td>{transaction.userId}</td>
+                        <td>{transaction.transactionMonth1}</td>
+                        <td>{transaction.transactionMonth2}</td>
+                        <td>{transaction.transactionMonth3}</td>
+                        <td>{transaction.transactionTotal}</td>
+                    </tr>
+                );
+            });
+        }
         return (
             <React.Fragment>
                 <div>
@@ -65,13 +65,7 @@ class TransactionSummary extends React.Component {
                             </thead>
 
                             <tbody>
-                                <tr key={1}>
-                                    <td>{this.state.transactions.userId}</td>
-                                    <td>{this.state.transactions.transactionMonth1}</td>
-                                    <td>{this.state.transactions.transactionMonth2}</td>
-                                    <td>{this.state.transactions.transactionMonth3}</td>
-                                    <td>{this.state.transactions.transactionTotal}</td>
-                                </tr>
+                                {row}
                             </tbody>
                         </table>
                     </div>

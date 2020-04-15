@@ -12,11 +12,11 @@ class TransactionService {
   // possibly of having it filter the results by month
   // right now, anyone can see the result of the transactions
   // as long as they have user access - user specific in future tho
-  def getTransactions(userCode: String): List[Transaction] = {
+  def getTransactions: List[Transaction] = {
     DB.readOnly { implicit session =>
-      val select = sql"select * from transactions where user_id = $userCode"
+      val select = sql"select * from transactions"
         .map{ rs =>
-          Transaction(userCode, rs.int("transaction_id"),
+          Transaction(rs.string("user_id"), rs.int("transaction_id"),
             rs.int("transaction_amount"),
             rs.date("transaction_date"), convertAmountToRewards(rs.int("transaction_amount")))
         }.list.apply()
@@ -24,12 +24,12 @@ class TransactionService {
     }
   }
 
-  def getTransactions1(userCode: String): Future[List[Transaction]] = {
+  def getTransactions1: Future[List[Transaction]] = {
 
     DB.futureLocalTx { implicit session =>
-      val select = sql"select * from transactions where user_id = $userCode"
+      val select = sql"select * from transactions"
         .map{ rs =>
-          Transaction(userCode, rs.int("transaction_id"),
+          Transaction(rs.string("user_id"), rs.int("transaction_id"),
             rs.int("transaction_amount"),
             rs.date("transaction_date"))
         }.list.apply()
@@ -38,28 +38,43 @@ class TransactionService {
     }
   }
 
-  def getSummary(userCode: String): TransactionSummary = {
-    val summaryValues = new HashMap[String,Int]()
-    var summaryYear = 0
-
-    getTransactions(userCode).map { record =>
+  def getSummary: List[TransactionSummary] = {
+    val summaryValues = new HashMap[String, HashMap[String, Int]]
+    val summaryYear = new HashMap[String, Int]
+    var dates: List[String] = List()
+    getTransactions.map { record =>
       val dateStr = record.transactionDate.toString().split("-")(1).toInt.toString()
-      if (!summaryValues.contains(dateStr)) {
-        summaryValues.put(dateStr, record.transactionRewards)
-      } else {
-        summaryValues.update(dateStr, summaryValues(dateStr) + record.transactionRewards)
+      if (!summaryValues.contains(record.userId)) {
+        summaryValues.put(record.userId, new HashMap[String, Int])
+        summaryYear.put(record.userId, 0)
       }
-      summaryYear += record.transactionRewards
+
+      if (!summaryValues.contains(dateStr)) {
+        summaryValues(record.userId).put(dateStr, record.transactionRewards)
+        dates = List(dateStr) ::: dates
+      } else {
+        summaryValues(record.userId).update(dateStr, summaryValues(record.userId)(dateStr) + record.transactionRewards)
+      }
+
+      if (!summaryYear.contains(record.userId)) {
+        summaryYear.put(record.userId, 0)
+      } else {
+        summaryYear.update(record.userId, record.transactionRewards)
+      }
     }
 
-    // test driving it, keep it at 1 right now
-    // todo: have a checker on the database to find the most recent number or id used
-    val keys = summaryValues.keys.map(_.toInt).toList.sorted.map(_.toString)
-    TransactionSummary(
-      userCode,
-      summaryValues(keys(0)), summaryValues(keys(1)), summaryValues(keys(2)),
-      summaryYear
-    )
+    val ids = summaryValues.keys.toList
+    ids.map { id =>
+      dates.distinct.foreach { date =>
+        if (!summaryValues(id).contains(date)) {
+          summaryValues(id).put(date, 0)
+        }
+      }
+      val keys = summaryValues(id).keys.map(_.toInt).toList.sorted.map(_.toString)
+      TransactionSummary(
+        id, summaryValues(id)(keys(0)), summaryValues(id)(keys(1)), summaryValues(id)(keys(2)), summaryYear(id)
+      )
+    }
   }
 
   // should be able to delete based on user selection
@@ -78,7 +93,7 @@ class TransactionService {
       val date = new Date
       val sdf = new SimpleDateFormat("yyyy-MM-dd")
       val fixedDate = sdf.format(date)
-      val entrySize = getTransactions(userCode).size
+      val entrySize = getTransactions.size
       sql"insert into transactions (user_id, transaction_id, transaction_amount, transaction_date) values ($userCode, $entrySize, $amount, $date)"
         .update.apply()
     }

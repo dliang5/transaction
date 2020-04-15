@@ -65,22 +65,11 @@ class Application (
     Ok(views.html.restricted(userAuthRequest.user))
   }
 
-
-  def transactions(userCode: String) = Action.async {
-    val transactionInfoF = transactionService.getTransactions1(userCode)
-    implicit val timeout = Timeout(5, TimeUnit.SECONDS)
-    for {
-      transactions <- transactionInfoF
-    } yield {
-      Ok(Json.toJson(transactions))
-    }
+  def getTransaction = Action { implicit request =>
+    Ok(Json.toJson(transactionService.getTransactions))
   }
-
-  def getTransaction(userCode: String) = Action { implicit request =>
-    Ok(Json.toJson(transactionService.getTransactions(userCode)))
-  }
-    def getSummary(userCode: String) = Action { implicit request =>
-    Ok(Json.toJson(transactionService.getSummary(userCode)))
+    def getSummary = Action { implicit request =>
+    Ok(Json.toJson(transactionService.getSummary))
   }
     def deleteTransaction(userCode: String) = Action { implicit request =>
     Ok(Json.toJson(transactionService.deleteTransaction(userCode)))

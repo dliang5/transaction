@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Tue Apr 14 22:28:24 CDT 2020
+// @DATE:Tue Apr 14 22:53:25 CDT 2020
 
 import play.api.mvc.Call
 
@@ -25,13 +25,13 @@ package controllers {
   
     // @LINE:13
     def getTransaction(): Call = {
-      implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("userCode", "stests"))); _rrc
+      
       Call("GET", _prefix + { _defaultPrefix } + "transactions")
     }
   
     // @LINE:14
     def getSummary(): Call = {
-      implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("userCode", "stests"))); _rrc
+      
       Call("GET", _prefix + { _defaultPrefix } + "summary")
     }
   

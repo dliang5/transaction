@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/david/Documents/interview/transaction/conf/routes
-// @DATE:Tue Apr 14 22:28:24 CDT 2020
+// @DATE:Tue Apr 14 22:53:25 CDT 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
