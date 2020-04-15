@@ -49,17 +49,19 @@ class TransactionService {
         summaryYear.put(record.userId, 0)
       }
 
-      if (!summaryValues.contains(dateStr)) {
+      if (!summaryValues(record.userId).contains(dateStr)) {
         summaryValues(record.userId).put(dateStr, record.transactionRewards)
         dates = List(dateStr) ::: dates
       } else {
         summaryValues(record.userId).update(dateStr, summaryValues(record.userId)(dateStr) + record.transactionRewards)
       }
 
+
+
       if (!summaryYear.contains(record.userId)) {
-        summaryYear.put(record.userId, 0)
+        summaryYear.put(record.userId, record.transactionRewards)
       } else {
-        summaryYear.update(record.userId, record.transactionRewards)
+        summaryYear.update(record.userId, summaryYear(record.userId) + record.transactionRewards)
       }
     }
 
